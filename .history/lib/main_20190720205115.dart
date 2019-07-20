@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MainPage(),
     );
@@ -120,8 +120,17 @@ class ArticlesPage extends StatelessWidget {
               height: 50.0,
               child: TabBar(
                 tabs: [
-                  Tab(text: 'Latest',),
-                  Tab(text: 'Popular'),
+                  Tab(
+                      icon: Icon(
+                    Icons.directions_car,
+                    color: Colors.grey,
+                  )),
+                  Tab(
+                      icon: Icon(Icons.directions_transit,
+                          color: Colors.grey)),
+                  Tab(
+                      icon:
+                          Icon(Icons.directions_bike, color: Colors.grey)),
                 ],
               ),
             ),

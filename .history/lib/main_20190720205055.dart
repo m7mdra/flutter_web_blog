@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MainPage(),
     );
@@ -111,29 +111,42 @@ class ArticlesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: Container(
-              height: 50.0,
-              child: TabBar(
-                tabs: [
-                  Tab(text: 'Latest',),
-                  Tab(text: 'Popular'),
+      child: Column(
+        children: <Widget>[
+          DefaultTabController(
+            length: 3,
+            child: Scaffold(
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(kToolbarHeight),
+                child: Container(
+                  height: 50.0,
+                  child: TabBar(
+                    tabs: [
+                      Tab(
+                          icon: Icon(
+                        Icons.directions_car,
+                        color: Colors.grey,
+                      )),
+                      Tab(
+                          icon: Icon(Icons.directions_transit,
+                              color: Colors.grey)),
+                      Tab(
+                          icon:
+                              Icon(Icons.directions_bike, color: Colors.grey)),
+                    ],
+                  ),
+                ),
+              ),
+              body: TabBarView(
+                children: [
+                  Icon(Icons.directions_car),
+                  Icon(Icons.directions_transit),
+                  Icon(Icons.directions_bike),
                 ],
               ),
             ),
           ),
-          body: TabBarView(
-            children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }

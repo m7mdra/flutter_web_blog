@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MainPage(),
     );
@@ -111,29 +111,38 @@ class ArticlesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(kToolbarHeight),
-            child: Container(
-              height: 50.0,
-              child: TabBar(
-                tabs: [
-                  Tab(text: 'Latest',),
-                  Tab(text: 'Popular'),
-                ],
-              ),
+      child: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: <Widget>[
+                Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        color: Colors.red)),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0,right: 16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(articles[index].time,style: Theme.of(context).textTheme.caption,),
+                      Text(
+                        articles[index].title,
+                        style: Theme.of(context).textTheme.title,
+                      ),
+                      Text("by ${articles[index].author}"),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ),
-          body: TabBarView(
-            children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
-            ],
-          ),
-        ),
+          );
+        },
+        itemCount: articles.length,
       ),
     );
   }
